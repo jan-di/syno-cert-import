@@ -113,9 +113,17 @@ synoPort = os.getenv('SYNO_PORT', 5001)
 synoUsername = os.getenv('SYNO_USERNAME', None)
 synoPassword = os.getenv('SYNO_PASSWORD', None)
 
+if synoHost == None: raise Exception('Variable SYNO_HOST is not defined!')
+if synoUsername == None: raise Exception('Variable SYNO_USERNAME is not defined!')
+if synoPassword == None: raise Exception('Variable SYNO_PASSWORD is not defined!')
+
 keyFile = os.getenv('KEY_FILE', None)
 certFile = os.getenv('CERT_FILE', None)
 chainFile = os.getenv('CHAIN_FILE', None)
+
+if keyFile == None: raise Exception('Variable KEY_FILE is not defined!')
+if certFile == None: raise Exception('Variable CERT_FILE is not defined!')
+if chainFile == None: raise Exception('Variable CHAIN_FILE is not defined!')
 
 syno = Synology(synoScheme, synoHost, synoPort)
 
