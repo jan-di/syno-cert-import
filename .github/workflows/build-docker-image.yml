@@ -2,8 +2,7 @@ name: Publish Docker image
 on:
   push:
     branches:    
-      - main
-      - github-ci
+      - master
 
 jobs:
   main:
