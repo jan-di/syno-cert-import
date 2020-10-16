@@ -9,4 +9,4 @@ RUN pip install --no-cache-dir pipenv && \
     
 COPY . /app/
 
-ENTRYPOINT [ "python", "/app/deploy.py" ]
+ENTRYPOINT [ "python", "-u", "/app/deploy.py" ]
