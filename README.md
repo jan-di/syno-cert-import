@@ -1,19 +1,19 @@
 # syno-cert-import #
 
-Simple python script to automatically import a certificate to a synology and set it as default certificate.
+Python script to automatically import a certificate to a synology and set it as default certificate.
 
 ## Configuration ##
 
-The script ist configured via enviroment variables:
+The script is configured via enviroment variables:
 
-`SYNO_SCHEME` http/https (optional, def. = https)
-`SYNO_HOST` IP-Adress or hostname of synology
-`SYNO_PORT` Port of Web API (optional, def. = 5001)
-`SYNO_USERNAME` User with administrative permissions
-`SYNO_PASSWORD` Password
-`KEY_FILE` Path to key file
-`CERT_FILE` Path to cert file
-`CHAIN_FILE` Path to chain file
+- `SYNO_SCHEME` http/https (optional, def. = https)
+- `SYNO_HOST` IP-Adress or hostname of synology
+- `SYNO_PORT` Port of Web API (optional, def. = 5001)
+- `SYNO_USERNAME` User with administrative permissions
+- `SYNO_PASSWORD` Password
+- `KEY_FILE` Path to key file
+- `CERT_FILE` Path to cert file
+- `CHAIN_FILE` Path to chain file
 
 ## Example ##
 
