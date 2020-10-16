@@ -2,6 +2,8 @@
 
 Python script to automatically import a certificate to a synology and set it as default certificate.
 
+Image on Dockerhub: <https://hub.docker.com/r/jandi/syno-cert-import>
+
 ## Configuration ##
 
 The script is configured via enviroment variables:
