@@ -1,15 +1,16 @@
+import distutils.util
 import requests
 import os
-import sys
 import json
 from datetime import datetime
 from dotenv import load_dotenv
 
 class Synology:
-    def __init__(self, scheme, host, port):
+    def __init__(self, scheme, host, port, verifySsl):
         self.scheme = scheme
         self.host = host
         self.port = port
+        self.verifySsl = verifySsl
 
         self.baseUrl = '{}://{}:{}/webapi/'.format(scheme, host, port)
         self.defaultCookies = {}
@@ -21,9 +22,9 @@ class Synology:
             'method': 'login',
             'account': username,
             'passwd': password,
-            'session': 'yolo',
+            'session': '',
             'format': 'sid'
-        })
+        }, verify=self.verifySsl)
         json = res.json()
 
         if not json['success']:
@@ -37,7 +38,7 @@ class Synology:
             'api': 'SYNO.API.Auth',
             'version' : '3',
             'method': 'logout',
-        })
+        }, verify=self.verifySsl)
         json = res.json()
 
         if not json['success']:
@@ -53,7 +54,8 @@ class Synology:
                 'version': 1,
                 'method': 'list'
             },
-            cookies = self.defaultCookies
+            cookies = self.defaultCookies,
+            verify=self.verifySsl
         )
         json = res.json()
 
@@ -79,7 +81,8 @@ class Synology:
                 ('id', (None, '')),
                 ('as_default', (None, 'True'))
             ],
-            cookies = self.defaultCookies
+            cookies = self.defaultCookies,
+            verify=self.verifySsl
         )
         json = res.json()
 
@@ -96,7 +99,8 @@ class Synology:
                 'method': 'delete',
                 'ids': json.dumps([id])
             },
-            cookies = self.defaultCookies
+            cookies = self.defaultCookies,
+            verify=self.verifySsl
         )
         body = res.json()
 
@@ -112,6 +116,7 @@ synoHost = os.getenv('SYNO_HOST', None)
 synoPort = os.getenv('SYNO_PORT', 5001)
 synoUsername = os.getenv('SYNO_USERNAME', None)
 synoPassword = os.getenv('SYNO_PASSWORD', None)
+verifySsl = distutils.util.strtobool(os.getenv('VERIFY_SSL', 'true'))
 
 if synoHost == None: raise Exception('Variable SYNO_HOST is not defined!')
 if synoUsername == None: raise Exception('Variable SYNO_USERNAME is not defined!')
@@ -125,7 +130,7 @@ if keyFile == None: raise Exception('Variable KEY_FILE is not defined!')
 if certFile == None: raise Exception('Variable CERT_FILE is not defined!')
 if chainFile == None: raise Exception('Variable CHAIN_FILE is not defined!')
 
-syno = Synology(synoScheme, synoHost, synoPort)
+syno = Synology(synoScheme, synoHost, synoPort, verifySsl)
 
 print('Connecting with {} to {}://{}:{}'.format(synoUsername, synoScheme, synoHost, synoPort))
 syno.login(synoUsername, synoPassword)

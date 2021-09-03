@@ -16,6 +16,7 @@ Name | Default | Description
 `SYNO_PORT` | `5001` | Port of Web API
 `SYNO_USERNAME` | - | User with administrative permissions
 `SYNO_PASSWORD` | - | Password
+`VERIFY_SSL` | `true` | Verify SSL Certificate
 `KEY_FILE` | - | Path to key file
 `CERT_FILE` | - | Path to cert file
 `CHAIN_FILE` | - | Path to chain file
@@ -40,5 +41,5 @@ docker run \
     --network host \
     jandi/syno-cert-import
 ```
-- Network = Host is needed, so that the script can reach the Synology API via localhost. Otherwise the default gateway of the docker network must be used - this address could change, when the network is recreated.
-- You could connect via https/5001, but the script will fail if the current certificate is not valid. When the script runs locally on the synology, http is recommended.
+- `--network host` is required, to let the script reach the Synology API via localhost. Otherwise the default gateway of the docker network must be used - this address could change, when the network is recreated.
+- You could connect via `https/5001`, but the script will fail if the current certificate is not valid. When the script runs locally on the synology, http is recommended. Alternatively, you could disable ssl verification with `SSL_VERIFY=false`
