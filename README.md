@@ -1,21 +1,24 @@
-# syno-cert-import #
+# Synology Certificate Import #
 
 Python script to automatically import a certificate to a synology and set it as default certificate.
 
-Image on Dockerhub: <https://hub.docker.com/r/jandi/syno-cert-import>
+- Source: <https://github.com/jan-di/syno-cert-import>
+- Docker Image: <https://hub.docker.com/r/jandi/syno-cert-import>
 
 ## Configuration ##
 
 The script is configured via enviroment variables:
 
-- `SYNO_SCHEME` http/https (optional, def. = https)
-- `SYNO_HOST` IP-Adress or hostname of synology
-- `SYNO_PORT` Port of Web API (optional, def. = 5001)
-- `SYNO_USERNAME` User with administrative permissions
-- `SYNO_PASSWORD` Password
-- `KEY_FILE` Path to key file
-- `CERT_FILE` Path to cert file
-- `CHAIN_FILE` Path to chain file
+Name | Default | Description
+--- | --- | ---
+`SYNO_SCHEME` | `https` | http/https
+`SYNO_HOST` | - | IP-Adress or hostname of synology
+`SYNO_PORT` | `5001` | Port of Web API
+`SYNO_USERNAME` | - | User with administrative permissions
+`SYNO_PASSWORD` | - | Password
+`KEY_FILE` | - | Path to key file
+`CERT_FILE` | - | Path to cert file
+`CHAIN_FILE` | - | Path to chain file
 
 ## Example ##
 
