@@ -1,9 +1,14 @@
 # Synology Certificate Import #
 
-[![](https://img.shields.io/github/workflow/status/jan-di/syno-cert-import/Build%20Docker%20image?style=flat)](https://github.com/jan-di/syno-cert-import/actions/workflows/build-docker-image.yml)
-[![](https://img.shields.io/github/license/jan-di/syno-cert-import?style=flat)](https://github.com/jan-di/syno-cert-import/blob/main/LICENSE)
+[![Source](https://badgen.net/badge/icon/Source?icon=github&label)](https://github.com/jan-di/syno-cert-import)
+[![Checks](https://badgen.net/github/checks/jan-di/syno-cert-import)](https://github.com/jan-di/syno-cert-import/actions/workflows/build-docker-image.yml)
+[![Release](https://badgen.net/github/release/jan-di/syno-cert-import/stable)](https://github.com/jan-di/syno-cert-import/releases)
+[![Last Commit](https://badgen.net/github/last-commit/jan-di/syno-cert-import/main)](https://github.com/jan-di/syno-cert-import/commits/main)
+[![License](https://badgen.net/github/license/jan-di/syno-cert-import)](https://github.com/jan-di/syno-cert-import/blob/main/LICENSE)
 
 Python script to automatically import a certificate to a synology and set it as default certificate.
+
+Docker Image Tags:
 
 - `jandi/syno-cert-import` [Docker Hub](https://hub.docker.com/r/jandi/syno-cert-import)
 - `ghcr.io/jan-di/syno-cert-import` [GitHub Container Registry](https://github.com/jan-di/syno-cert-import/pkgs/container/syno-cert-import)
