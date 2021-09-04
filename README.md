@@ -1,5 +1,8 @@
 # Synology Certificate Import #
 
+[![](https://img.shields.io/github/workflow/status/jan-di/syno-cert-import/Build%20Docker%20image?style=flat)](https://github.com/jan-di/syno-cert-import/actions/workflows/build-docker-image.yml)
+[![](https://img.shields.io/github/license/jan-di/syno-cert-import?style=flat)](https://github.com/jan-di/syno-cert-import/blob/main/LICENSE)
+
 Python script to automatically import a certificate to a synology and set it as default certificate.
 
 - Source: <https://github.com/jan-di/syno-cert-import>
