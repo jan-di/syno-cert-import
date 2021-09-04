@@ -1,4 +1,10 @@
 name: Build Docker image
+
+env:
+  DOCKERHUB_TAG: 'jandi/syno-cert-import'
+  GITHUB_TAG: 'ghcr.io/jan-di/syno-cert-import'
+  PLATFORMS: linux/amd64,linux/arm/v7,linux/arm64
+
 on:
   push:
     branches:
@@ -13,8 +19,6 @@ jobs:
   main:
     name: Build & Push Docker image
     runs-on: ubuntu-latest
-    env:
-      IMAGE_TAG: jandi/syno-cert-import
     steps:
       - 
         name: Checkout code
@@ -24,7 +28,9 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v3
         with:
-          images: ${{ env.IMAGE_TAG }}
+          images: |
+            ${{ env.DOCKERHUB_TAG }}
+            ${{ env.GITHUB_TAG }}
           tags: |
             type=ref,event=branch
             type=ref,event=pr
@@ -32,13 +38,21 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
             type=sha
-      - 
-        name: Login to Docker Hub
+      -
+        name: Login to DockerHub
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v1 
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Login to GitHub Container Registry
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v1 
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -55,4 +69,4 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
-          platforms: linux/amd64,linux/arm/v7,linux/arm64
+          platforms: ${{ env.PLATFORMS }}
