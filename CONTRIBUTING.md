@@ -1,11 +1,11 @@
-# Contributing #
+# Contributing
 
-## Setup ##
+## Setup
 
-Check that python3 and pipenv are installed.
+1. Install Requirements for [Visual Studio Code Dev Container](https://code.visualstudio.com/docs/remote/containers)
+2. Start and connect to Dev Container
 
-Create python virtual env:
-`python -m venv .venv`
+## Debugging
 
-Install dependencies, including dev ones:
-`pipenv install --dev`
+- Debug via Visual Studio Code Launchconfig
+- Custom Environment Variables can be put into `.vscode/.env`

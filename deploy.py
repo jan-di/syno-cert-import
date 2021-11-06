@@ -59,7 +59,8 @@ class Synology:
     def getDefaultCert(self) -> dict:
         res = requests.get(
             self.baseUrl + "entry.cgi",
-            params={"api": "SYNO.Core.Certificate.CRT", "version": 1, "method": "list"},
+            params={"api": "SYNO.Core.Certificate.CRT",
+                    "version": 1, "method": "list"},
             cookies=self.defaultCookies,
             verify=self.verifySsl,
         )
@@ -148,22 +149,22 @@ synoUsername = os.getenv("SYNO_USERNAME", None)
 synoPassword = os.getenv("SYNO_PASSWORD", None)
 verifySsl = distutils.util.strtobool(os.getenv("VERIFY_SSL", "true"))
 
-if synoHost == None:
+if synoHost is None:
     raise Exception("Variable SYNO_HOST is not defined!")
-if synoUsername == None:
+if synoUsername is None:
     raise Exception("Variable SYNO_USERNAME is not defined!")
-if synoPassword == None:
+if synoPassword is None:
     raise Exception("Variable SYNO_PASSWORD is not defined!")
 
 keyFile = os.getenv("KEY_FILE", None)
 certFile = os.getenv("CERT_FILE", None)
 chainFile = os.getenv("CHAIN_FILE", None)
 
-if keyFile == None:
+if keyFile is None:
     raise Exception("Variable KEY_FILE is not defined!")
-if certFile == None:
+if certFile is None:
     raise Exception("Variable CERT_FILE is not defined!")
-if chainFile == None:
+if chainFile is None:
     raise Exception("Variable CHAIN_FILE is not defined!")
 
 syno = Synology(synoScheme, synoHost, synoPort, verifySsl)

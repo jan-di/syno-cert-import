@@ -2,11 +2,13 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Current File",
+            "name": "Run Script",
             "type": "python",
             "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal"
+            "program": "deploy.py",
+            "console": "integratedTerminal",
+            "env": {},
+            "envFile": "${workspaceFolder}/.vscode/.env"
         }
     ]
 }
