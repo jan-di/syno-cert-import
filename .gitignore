@@ -4,4 +4,6 @@
 *.crt
 *.key
 
+*.pyc
+
 .vscode/.env

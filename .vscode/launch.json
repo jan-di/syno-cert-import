@@ -5,7 +5,7 @@
             "name": "Run Script",
             "type": "python",
             "request": "launch",
-            "program": "deploy.py",
+            "program": "main.py",
             "console": "integratedTerminal",
             "env": {},
             "envFile": "${workspaceFolder}/.vscode/.env"

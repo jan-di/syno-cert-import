@@ -18,4 +18,4 @@ ENV PATH="/.venv/bin:$PATH"
 WORKDIR /app
 COPY . .
 
-CMD [ "python3", "/app/deploy.py" ]
+CMD [ "python3", "/app/main.py" ]
