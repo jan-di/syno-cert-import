@@ -1,7 +1,7 @@
 name: Build Docker image
 
 env:
-  DOCKERHUB_TAG: 'jandi/syno-cert-import'
+  DOCKERHUB_TAG: 'docker.io/jandi/syno-cert-import'
   GITHUB_TAG: 'ghcr.io/jan-di/syno-cert-import'
   PLATFORMS: linux/amd64,linux/arm/v7,linux/arm64
 

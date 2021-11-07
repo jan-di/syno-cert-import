@@ -10,8 +10,10 @@ Python script to automatically import a certificate to a synology and set it as 
 
 Docker Image Tags:
 
-- `jandi/syno-cert-import` [Docker Hub](https://hub.docker.com/r/jandi/syno-cert-import)
+- `docker.io/jandi/syno-cert-import` [Docker Hub](https://hub.docker.com/r/jandi/syno-cert-import)
 - `ghcr.io/jan-di/syno-cert-import` [GitHub Container Registry](https://github.com/jan-di/syno-cert-import/pkgs/container/syno-cert-import)
+
+Supported Architectures: `amd64`, `arm64`, `arm/v7`
 
 ## Configuration ##
 
@@ -47,7 +49,7 @@ docker run \
     -e CERT_FILE="/cache/cert.crt" \
     -e CHAIN_FILE="/cache/chain.crt" \
     --network host \
-    jandi/syno-cert-import
+    docker.io/jandi/syno-cert-import
 ```
 - `--network host` is required, to let the script reach the Synology API via localhost. Otherwise the default gateway of the docker network must be used - this address could change, when the network is recreated.
 - You could connect via `https/5001`, but the script will fail if the current certificate is not valid. When the script runs locally on the synology, http is recommended. Alternatively, you could disable ssl verification with `SSL_VERIFY=false`
