@@ -1,4 +1,4 @@
-# Synology Certificate Import #
+# Synology Certificate Import
 
 [![Source](https://badgen.net/badge/icon/Source?icon=github&label)](https://github.com/jan-di/syno-cert-import)
 [![Checks](https://badgen.net/github/checks/jan-di/syno-cert-import)](https://github.com/jan-di/syno-cert-import/actions/workflows/build-docker-image.yml)
@@ -15,7 +15,7 @@ Docker Image Tags:
 
 Supported Architectures: `amd64`, `arm64`, `arm/v7`
 
-## Configuration ##
+## Configuration
 
 The script is configured via enviroment variables:
 
@@ -31,7 +31,7 @@ Name | Default | Description
 `CERT_FILE` | - | Path to cert file
 `CHAIN_FILE` | - | Path to chain file
 
-## Example ##
+## Example
 
 Sample script to use the image as a command:
 
@@ -53,3 +53,9 @@ docker run \
 ```
 - `--network host` is required, to let the script reach the Synology API via localhost. Otherwise the default gateway of the docker network must be used - this address could change, when the network is recreated.
 - You could connect via `https/5001`, but the script will fail if the current certificate is not valid. When the script runs locally on the synology, http is recommended. Alternatively, you could disable ssl verification with `SSL_VERIFY=false`
+
+## Troubleshooting
+
+Topic | Description
+--- | ---
+API-Error `5514` | Check if your key matches to the given certificate files.

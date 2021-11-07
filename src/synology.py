@@ -110,12 +110,13 @@ class Synology:
             cookies=self.defaultCookies,
             verify=self.verifySsl,
         )
-        json = res.json()
+        body = res.json()
 
-        if not json["success"]:
-            raise Exception("Could not import certifcate")
+        if not body["success"]:
+            raise Exception(
+                f"Could not import certificate. API-Error: {body['error']['code']}")
 
-        return json["data"]["id"]
+        return body["data"]["id"]
 
     def deleteCert(self, id: str) -> dict:
         res = requests.post(
