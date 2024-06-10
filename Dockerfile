@@ -1,4 +1,4 @@
-FROM docker.io/library/python:3.10.8-bullseye AS base
+FROM docker.io/library/python:3.12.4-bullseye AS base
 
 ENV PYTHONFAULTHANDLER=1 \
     PYTHONUNBUFFERED=1
